@@ -1,177 +1,393 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giovani | Portfolio</title>
+    <title>Perumahan Agro Lestari | Hunian Mewah & Strategis</title>
+    
+    <!-- Tailwind CSS & Plugins -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'estate-primary': '#0f3a20',   /* Hijau Emerald Tua Premium */
+                        'estate-secondary': '#d4af37', /* Gold Eksklusif */
+                        'estate-dark': '#111827',
+                        'estate-light': '#f4f7f5'
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .gradient-text { background: linear-gradient(135deg, #60a5fa 0%, #c084fc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .blob { position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0,0,0,0) 70%); filter: blur(40px); z-index: -1; }
+        html { scroll-behavior: smooth; }
+        .hero-bg {
+            background-image: linear-gradient(rgba(15, 58, 32, 0.65), rgba(17, 24, 39, 0.85)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        nav.scrolled {
+            background-color: rgba(15, 58, 32, 0.95);
+            backdrop-filter: blur(8px);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
+        }
+        .img-zoom:hover img {
+            transform: scale(1.08);
+        }
     </style>
 </head>
-<body class="bg-[#0f172a] text-slate-200 antialiased overflow-x-hidden">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased selection:bg-estate-secondary selection:text-white">
 
-    <!-- Blobs Decoration -->
-    <div class="blob top-[-10%] left-[-10%]"></div>
-    <div class="blob bottom-[-10%] right-[-10%]"></div>
-
-    <!-- Navigation -->
-    <nav class="fixed w-full top-0 z-50 glass">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <span class="text-xl font-extrabold tracking-tighter gradient-text">GIOVANI</span>
-            <div class="hidden md:flex space-x-8 text-sm font-medium">
-                <a href="#about" class="hover:text-blue-400 transition">About</a>
-                <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
-                <a href="#skills" class="hover:text-blue-400 transition">Expertise</a>
-                <a href="#contact" class="text-blue-400 border border-blue-400/30 px-4 py-1.5 rounded-full hover:bg-blue-400/10 transition">Hire Me</a>
+    <!-- NAVIGATION -->
+    <nav id="navbar" class="fixed w-full top-0 left-0 z-50 transition-all duration-300 py-6 text-white">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2">
+                <i class="fas fa-hotel text-estate-secondary text-2xl"></i>
+                <span class="font-serif text-xl font-bold tracking-wider">GRAND <span class="text-estate-secondary">RESIDENCE</span></span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-8 font-semibold text-sm tracking-wide">
+                <a href="#beranda" class="hover:text-estate-secondary transition">Beranda</a>
+                <a href="#keunggulan" class="hover:text-estate-secondary transition">Keunggulan</a>
+                <a href="#tipe" class="hover:text-estate-secondary transition">Tipe Unit</a>
+                <a href="#fasilitas" class="hover:text-estate-secondary transition">Fasilitas</a>
+                <a href="#kontak" class="bg-estate-secondary text-estate-primary px-6 py-2.5 rounded shadow-lg hover:bg-white hover:text-estate-primary transition-all duration-300">Hubungi Kami</a>
             </div>
+
+            <button id="menu-btn" class="md:hidden text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-estate-primary border-t border-emerald-800 p-6 flex flex-col space-y-4 font-semibold shadow-xl">
+            <a href="#beranda" class="hover:text-estate-secondary py-2">Beranda</a>
+            <a href="#keunggulan" class="hover:text-estate-secondary py-2">Keunggulan</a>
+            <a href="#tipe" class="hover:text-estate-secondary py-2">Tipe Unit</a>
+            <a href="#fasilitas" class="hover:text-estate-secondary py-2">Fasilitas</a>
+            <a href="#kontak" class="bg-estate-secondary text-center text-estate-primary py-3 rounded">Hubungi Kami</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-40 pb-20 px-6">
-        <div class="max-w-5xl mx-auto text-center">
-            <div class="inline-block px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold mb-6 tracking-widest uppercase">
-                Available for New Projects
-            </div>
-            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight leading-tight">
-                Backend Architect & <br><span class="gradient-text">Systems Security.</span>
+    <!-- HERO SECTION -->
+    <section id="beranda" class="hero-bg h-screen flex items-center justify-center text-center px-4">
+        <div class="max-w-4xl text-white" data-aos="zoom-out" data-aos-duration="1200">
+            <span class="text-estate-secondary font-bold tracking-widest text-xs md:text-sm uppercase bg-emerald-950/60 px-4 py-2 rounded-full border border-emerald-700/50">Eksklusif & Terbatas</span>
+            <h1 class="font-serif text-4xl md:text-7xl font-bold mt-6 mb-6 leading-tight">
+                Temukan Rumah Impian <br><span class="text-estate-secondary">Masa Depan Anda</span>
             </h1>
-            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-                Saya membangun aplikasi web yang kompleks dengan Laravel dan mengamankan infrastruktur server melalui audit keamanan tingkat lanjut.
+            <p class="text-base md:text-xl text-gray-200 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+                Hunian premium berdesain modern tropis dengan lingkungan asri, strategis, dan sistem keamanan pintar 24 jam.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#projects" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold shadow-lg shadow-blue-600/20 transition-all transform hover:-translate-y-1">
-                    Lihat Portofolio Proyek
-                </a>
-                <a href="#contact" class="glass text-white px-8 py-4 rounded-2xl font-bold hover:bg-white/5 transition-all">
-                    Hubungi Saya
-                </a>
+                <a href="#tipe" class="bg-estate-secondary text-estate-primary font-bold px-8 py-4 rounded shadow-2xl hover:bg-white hover:scale-105 transition duration-300">Lihat Tipe Unit</a>
+                <a href="#kontak" class="border-2 border-white/80 font-bold px-8 py-4 rounded hover:bg-white/10 hover:border-white transition duration-300"><i class="fab fa-whatsapp mr-2"></i>Konsultasi Gratis</a>
             </div>
         </div>
     </section>
 
-    <!-- Projects Grid -->
-    <section id="projects" class="py-24 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-end mb-16">
-                <div>
-                    <h2 class="text-3xl font-bold text-white mb-2">Featured Projects</h2>
-                    <p class="text-slate-400 text-sm">Hasil kurasi pekerjaan terbaik saya dalam pengembangan sistem.</p>
-                </div>
-                <div class="hidden md:block h-[1px] flex-1 bg-slate-800 mx-10 mb-4"></div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Project 1: Risk Management -->
-                <div class="group relative">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                    <div class="relative glass p-8 rounded-3xl">
-                        <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6 text-blue-400">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Enterprise Risk Register</h3>
-                        <p class="text-slate-400 mb-6 text-sm leading-relaxed">Sistem backend berbasis Laravel untuk mengelola daftar risiko divisi, lengkap dengan audit trail untuk melacak modifikasi data secara mendetail.</p>
-                        <div class="flex flex-wrap gap-2 mb-8 text-xs font-mono">
-                            <span class="bg-slate-800 text-slate-300 px-3 py-1 rounded-full">Laravel 10</span>
-                            <span class="bg-slate-800 text-slate-300 px-3 py-1 rounded-full">MySQL</span>
-                            <span class="bg-slate-800 text-slate-300 px-3 py-1 rounded-full">AdminLTE</span>
-                        </div>
-                        <a href="#" class="text-blue-400 font-bold flex items-center group/link">
-                            Case Study <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-4 h-4 transition-transform group-hover/link:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 2: Security Audit -->
-                <div class="group relative">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                    <div class="relative glass p-8 rounded-3xl">
-                        <div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center mb-6 text-purple-400">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Server Hardening & Audit</h3>
-                        <p class="text-slate-400 mb-6 text-sm leading-relaxed">Pengelolaan infrastruktur server Linux (Ubuntu/CentOS), konfigurasi permission folder yang aman, dan implementasi brute-force protection.</p>
-                        <div class="flex flex-wrap gap-2 mb-8 text-xs font-mono">
-                            <span class="bg-slate-800 text-slate-300 px-3 py-1 rounded-full">Cyber Security</span>
-                            <span class="bg-slate-800 text-slate-300 px-3 py-1 rounded-full">SysAdmin</span>
-                            <span class="bg-slate-800 text-slate-300 px-3 py-1 rounded-full">Bash</span>
-                        </div>
-                        <a href="#" class="text-purple-400 font-bold flex items-center group/link">
-                            Technical Docs <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-4 h-4 transition-transform group-hover/link:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-24 glass border-y border-white/5">
+    <!-- KEUNGGULAN SEKTION -->
+    <section id="keunggulan" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-12">
-                <div>
-                    <h3 class="text-xl font-bold text-white mb-4">Core Tech</h3>
-                    <ul class="space-y-3 text-slate-400 text-sm">
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span> PHP / Laravel</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span> JavaScript / Node.js</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span> MySQL / PostgreSQL</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3"></span> RESTful API Design</li>
-                    </ul>
+            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="font-serif text-3xl md:text-5xl font-bold text-estate-primary">Mengapa Memilih Kami?</h2>
+                <div class="w-20 h-1 bg-estate-secondary mx-auto mt-4"></div>
+                <p class="text-gray-500 mt-4">Kami memberikan kualitas bangunan terbaik dan kenyamanan hidup maksimal untuk keluarga Anda.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-estate-light p-10 rounded-xl border border-gray-100 hover:shadow-2xl transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-emerald-100 rounded-lg flex items-center justify-center text-estate-primary text-2xl mb-6">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-estate-primary mb-3">Lokasi Sangat Strategis</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Hanya 5 menit menuju gerbang tol utama, pusat perbelanjaan, rumah sakit internasional, dan sekolah favorit.</p>
                 </div>
-                <div>
-                    <h3 class="text-xl font-bold text-white mb-4">Infrastructure</h3>
-                    <ul class="space-y-3 text-slate-400 text-sm">
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full mr-3"></span> Linux Server (Ubuntu)</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full mr-3"></span> Nginx / Apache</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full mr-3"></span> Docker Basics</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-purple-500 rounded-full mr-3"></span> SSH Key Management</li>
-                    </ul>
+                <!-- Card 2 -->
+                <div class="bg-estate-light p-10 rounded-xl border border-gray-100 hover:shadow-2xl transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-emerald-100 rounded-lg flex items-center justify-center text-estate-primary text-2xl mb-6">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-estate-primary mb-3">Keamanan Berlapis</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Menggunakan One Gate System, kartu akses digital, CCTV lingkungan, dan tim keamanan siaga 24 jam penuh.</p>
                 </div>
-                <div>
-                    <h3 class="text-xl font-bold text-white mb-4">Security</h3>
-                    <ul class="space-y-3 text-slate-400 text-sm">
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-pink-500 rounded-full mr-3"></span> Vulnerability Scanning</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-pink-500 rounded-full mr-3"></span> SQL Injection Prevention</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-pink-500 rounded-full mr-3"></span> Password Hashing (BCrypt)</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-pink-500 rounded-full mr-3"></span> Server Hardening</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold text-white mb-4">Creative</h3>
-                    <ul class="space-y-3 text-slate-400 text-sm">
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-3"></span> Image Upscaling</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-3"></span> Portrait Enhancement</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-3"></span> UI Customization</li>
-                        <li class="flex items-center"><span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-3"></span> Data Visualization</li>
-                    </ul>
+                <!-- Card 3 -->
+                <div class="bg-estate-light p-10 rounded-xl border border-gray-100 hover:shadow-2xl transition duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-emerald-100 rounded-lg flex items-center justify-center text-estate-primary text-2xl mb-6">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-estate-primary mb-3">Lingkungan Hijau & Asri</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Kawasan asri dengan taman botani luas, rute lari (*jogging track*), dan area bermain anak yang bebas polusi.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="contact" class="py-20 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-bold text-white mb-6">Let's Build Something Together</h2>
-            <p class="text-slate-400 mb-10">Sedang mencari developer untuk sistem backend atau audit keamanan?</p>
-            <a href="mailto:hi@giovanichadavi.com" class="text-2xl md:text-4xl font-bold text-white hover:text-blue-400 transition-colors break-all">
-                hello@giovanichadavi.com
-            </a>
-            <div class="mt-16 flex justify-center space-x-8">
-                <a href="#" class="text-slate-500 hover:text-white transition">LinkedIn</a>
-                <a href="#" class="text-slate-500 hover:text-white transition">GitHub</a>
-                <a href="#" class="text-slate-500 hover:text-white transition">Instagram</a>
+    <!-- TIPE UNIT SECTION -->
+    <section id="tipe" class="py-24 bg-estate-light">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="font-serif text-3xl md:text-5xl font-bold text-estate-primary">Pilihan Tipe Unit</h2>
+                <div class="w-20 h-1 bg-estate-secondary mx-auto mt-4"></div>
+                <p class="text-gray-500 mt-4">Pilih arsitektur rumah modern yang sesuai dengan kebutuhan dan representasi kelas sosial Anda.</p>
             </div>
-            <p class="mt-12 text-slate-600 text-xs tracking-widest uppercase">
-                &copy; 2026 GIOVANI PORTFOLIO. Built with Passion.
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Tipe 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg img-zoom group transition" data-aos="fade-right">
+                    <div class="overflow-hidden h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-500">
+                        <span class="absolute top-4 left-4 bg-estate-primary text-white font-bold text-xs px-3 py-1.5 rounded">Tipe Amethyst</span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl font-bold text-estate-primary mb-4">Tipe 64 / 90</h3>
+                        <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 border-b pb-6 mb-6">
+                            <div class="flex items-center gap-2"><i class="fas fa-bed text-estate-secondary"></i> 3 Kamar Tidur</div>
+                            <div class="flex items-center gap-2"><i class="fas fa-bath text-estate-secondary"></i> 2 Kamar Mandi</div>
+                            <div class="flex items-center gap-2"><i class="fas fa-car text-estate-secondary"></i> 1 Carport</div>
+                            <div class="flex items-center gap-2"><i class="fas fa-layer-group text-estate-secondary"></i> 1 Lantai</div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase tracking-wider">Harga Mulai</p>
+                                <p class="text-xl font-bold text-estate-primary">Rp 850 Juta-an</p>
+                            </div>
+                            <a href="#kontak" class="bg-estate-primary text-white p-3 rounded hover:bg-estate-secondary hover:text-estate-primary transition"><i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tipe 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg img-zoom group transition" data-aos="fade-up" data-aos-delay="100">
+                    <div class="overflow-hidden h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-500">
+                        <span class="absolute top-4 left-4 bg-estate-secondary text-estate-primary font-bold text-xs px-3 py-1.5 rounded">Terlaris</span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl font-bold text-estate-primary mb-4">Tipe 120 / 150</h3>
+                        <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 border-b pb-6 mb-6">
+                            <div class="flex items-center gap-2"><i class="fas fa-bed text-estate-secondary"></i> 4 Kamar Tidur</div>
+                            <div class="flex items-center gap-2"><i class="fas fa-bath text-estate-secondary"></i> 3 Kamar Mandi</div>
+                            <div class="flex items-center gap-2"><i class="fas fa-car text-estate-secondary"></i> 2 Carport</div>
+                            <div class="flex items-center gap-2"><i class="fas fa-layer-group text-estate-secondary"></i> 2 Lantai</div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase tracking-wider">Harga Mulai</p>
+                                <p class="text-xl font-bold text-estate-primary">Rp 1,5 Milyar-an</p>
+                            </div>
+                            <a href="#kontak" class="bg-estate-primary text-white p-3 rounded hover:bg-estate-secondary hover:text-estate-primary transition"><i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tipe 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg img-zoom group transition" data-aos="fade-left" data-aos-delay="200">
+                    <div class="overflow-hidden h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-500">
+                        <span class="absolute top-4 left-4 bg-estate-primary text-white font-bold text-xs px-3 py-1.5 rounded">Tipe Diamond Premium</span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl font-bold text-estate-primary mb-4">Tipe 210 / 250</h3>
+                        <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 border-b pb-6 mb-6">
+                            <div class="flex items-center gap-2"><i class="fas fa-bed text-estate-secondary"></i> 5 Kamar Tidur</div>
+                            <div class="flex items-center gap-2"><i class="fas fa-bath text-estate-secondary"></i> 4 Kamar Mandi</div>
+                            <div class="flex items-center gap-2"><i class="fas fa-car text-estate-secondary"></i> 2 Carport</div>
+                            <div class="flex items-center gap-2"><i class="fas fa-layer-group text-estate-secondary"></i> 2 Lantai</div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase tracking-wider">Harga Mulai</p>
+                                <p class="text-xl font-bold text-estate-primary">Rp 2,8 Milyar-an</p>
+                            </div>
+                            <a href="#kontak" class="bg-estate-primary text-white p-3 rounded hover:bg-estate-secondary hover:text-estate-primary transition"><i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FASILITAS UTAMA -->
+    <section id="fasilitas" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="font-serif text-3xl md:text-5xl font-bold text-estate-primary">Fasilitas Internal Eksklusif</h2>
+                <div class="w-20 h-1 bg-estate-secondary mx-auto mt-4"></div>
+                <p class="text-gray-500 mt-4">Seluruh fasilitas mewah ini dirancang khusus untuk menunjang gaya hidup sehat dan dinamis Anda.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="text-center p-6 bg-estate-light rounded-xl" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-swimming-pool text-4xl text-estate-secondary mb-4"></i>
+                    <h4 class="font-bold text-estate-primary text-sm md:text-base">Kolam Renang</h4>
+                </div>
+                <div class="text-center p-6 bg-estate-light rounded-xl" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-dumbbell text-4xl text-estate-secondary mb-4"></i>
+                    <h4 class="font-bold text-estate-primary text-sm md:text-base">Pusat Kebugaran (*Gym*)</h4>
+                </div>
+                <div class="text-center p-6 bg-estate-light rounded-xl" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-child text-4xl text-estate-secondary mb-4"></i>
+                    <h4 class="font-bold text-estate-primary text-sm md:text-base">Taman Bermain Anak</h4>
+                </div>
+                <div class="text-center p-6 bg-estate-light rounded-xl" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fas fa-wifi text-4xl text-estate-secondary mb-4"></i>
+                    <h4 class="font-bold text-estate-primary text-sm md:text-base">Kawasan Wifi Publik</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMO CTA -->
+    <section class="py-20 bg-estate-primary text-white text-center px-4 relative overflow-hidden">
+        <div class="absolute -right-10 -top-10 w-40 h-40 bg-emerald-800 rounded-full blur-3xl opacity-50"></div>
+        <div class="max-w-3xl mx-auto relative z-10" data-aos="fade-up">
+            <h2 class="font-serif text-3xl md:text-5xl font-bold mb-6">Dapatkan Promo Spesial Bulan Ini!</h2>
+            <p class="text-emerald-100 font-light mb-8 max-w-xl mx-auto text-sm md:text-base">
+                Diskon Booking Fee 50%, Subsidi Biaya KPR, Gratis AC di setiap kamar, serta Smart Home System tanpa biaya tambahan.
             </p>
+            <a href="#kontak" class="inline-block bg-estate-secondary text-estate-primary font-bold px-10 py-4 rounded shadow-xl hover:bg-white hover:scale-105 transition duration-300">Ambil Promo Sekarang</a>
+        </div>
+    </section>
+
+    <!-- KONTAK / FORM SECTION -->
+    <section id="kontak" class="py-24 bg-estate-light">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <span class="text-estate-secondary font-bold text-xs tracking-widest uppercase">Hubungi Tim Marketing</span>
+                    <h2 class="font-serif text-3xl md:text-5xl font-bold text-estate-primary mt-3 mb-6">Siap Memiliki Rumah Impian Anda?</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed text-sm md:text-base">
+                        Isi formulir di samping atau hubungi WhatsApp kami. Agen properti profesional kami akan membantu proses pembelian, survei lokasi, hingga simulasi KPR dengan senang hati.
+                    </p>
+                    
+                    <div class="space-y-4 font-semibold text-estate-primary text-sm md:text-base">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-white shadow rounded-full flex items-center justify-center text-estate-secondary"><i class="fas fa-phone-alt"></i></div>
+                            <span>(021) 8899-7766</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-white shadow rounded-full flex items-center justify-center text-estate-secondary"><i class="fab fa-whatsapp"></i></div>
+                            <span>0812-3456-7890 (WhatsApp Siaga)</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-white shadow rounded-full flex items-center justify-center text-estate-secondary"><i class="fas fa-envelope"></i></div>
+                            <span>info@grandresidence.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-gray-100" data-aos="fade-left">
+                    <h3 class="font-serif text-2xl font-bold text-estate-primary mb-6">Formulir Minat Survei</h3>
+                    <form action="#" class="space-y-5 text-xs md:text-sm">
+                        <div>
+                            <label class="block text-gray-600 font-bold mb-2">Nama Lengkap</label>
+                            <input type="text" placeholder="Masukkan nama Anda" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-estate-primary bg-gray-50 transition" required>
+                        </div>
+                        <div>
+                            <label class="block text-gray-600 font-bold mb-2">Nomor WhatsApp</label>
+                            <input type="tel" placeholder="Contoh: 0812345678" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-estate-primary bg-gray-50 transition" required>
+                        </div>
+                        <div>
+                            <label class="block text-gray-600 font-bold mb-2">Pilihan Tipe Unit</label>
+                            <select class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-estate-primary bg-gray-50 transition">
+                                <option>Tipe Amethyst (64/90)</option>
+                                <option>Tipe Terlaris (120/150)</option>
+                                <option>Tipe Diamond Premium (210/250)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-estate-primary text-white font-bold py-4 rounded-lg shadow-lg hover:bg-estate-secondary hover:text-estate-primary transition-all duration-300 uppercase tracking-wider text-xs">Kirim Data Saya</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-estate-dark text-gray-400 py-16 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-gray-800 pb-12 mb-8 text-xs md:text-sm">
+            <div>
+                <a href="#" class="flex items-center gap-2 text-white mb-6">
+                    <i class="fas fa-hotel text-estate-secondary text-2xl"></i>
+                    <span class="font-serif text-xl font-bold tracking-wider">GRAND <span class="text-estate-secondary">RESIDENCE</span></span>
+                </a>
+                <p class="leading-relaxed text-gray-400">
+                    Kawasan hunian eksklusif yang memadukan keindahan alam tropis dengan kemudahan mobilitas modern di pusat kota.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-xs">Akses Navigasi</h4>
+                <div class="grid grid-cols-2 gap-3 font-medium">
+                    <a href="#beranda" class="hover:text-white transition">Beranda</a>
+                    <a href="#keunggulan" class="hover:text-white transition">Keunggulan</a>
+                    <a href="#tipe" class="hover:text-white transition">Tipe Unit</a>
+                    <a href="#fasilitas" class="hover:text-white transition">Fasilitas</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-xs">Ikuti Media Sosial Kami</h4>
+                <div class="flex space-x-4 text-xl text-white mb-4">
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-estate-secondary hover:text-estate-primary transition"><i class="fab fa-facebook-f text-sm"></i></a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-estate-secondary hover:text-estate-primary transition"><i class="fab fa-instagram text-sm"></i></a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-estate-secondary hover:text-estate-primary transition"><i class="fab fa-youtube text-sm"></i></a>
+                </div>
+                <p class="text-xs text-gray-500">Terdaftar dan diawasi oleh Kementerian PUPR.</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-4">
+            <p>© 2026 PT Grand Residence Properti Tbk. Hak Cipta Dilindungi.</p>
+            <p class="uppercase tracking-widest text-[10px]">Luxurious Living Space</p>
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inisialisasi Animasi AOS
+        AOS.init({ duration: 1000, once: true });
+
+        // Animasi Navbar saat di-scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Responsivitas Hambuger Menu di HP
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Menutup menu mobile otomatis jika tautan diklik
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
