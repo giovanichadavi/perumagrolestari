@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perumahan Agro Lestari | Hunian Mewah & Strategis</title>
+    <title>KANA Living | Urban Architectural Space</title>
     
     <!-- Tailwind CSS & Plugins -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Syne untuk Judul Eksentrik & Plus Jakarta Sans untuk Teks Bersih -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'estate-primary': '#0f3a20',   /* Hijau Emerald Tua Premium */
-                        'estate-secondary': '#d4af37', /* Gold Eksklusif */
-                        'estate-dark': '#111827',
-                        'estate-light': '#f4f7f5'
+                        'kana-clay': '#b85c38',    /* Terracotta Kontemporer */
+                        'kana-sand': '#f4f0ea',    /* Beige Lembut / Japandi */
+                        'kana-dark': '#1a1c1e',    /* Charcoal Pekat Premium */
+                        'kana-muted': '#5c636a'
                     },
                     fontFamily: {
-                        sans: ['Montserrat', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Syne', 'sans-serif'],
                     }
                 }
             }
@@ -36,325 +36,254 @@
     <style>
         html { scroll-behavior: smooth; }
         .hero-bg {
-            background-image: linear-gradient(rgba(15, 58, 32, 0.65), rgba(17, 24, 39, 0.85)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80');
+            background-image: linear-gradient(rgba(26, 28, 30, 0.4), rgba(26, 28, 30, 0.7)), url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
         }
         nav.scrolled {
-            background-color: rgba(15, 58, 32, 0.95);
-            backdrop-filter: blur(8px);
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
+            background-color: #1a1c1e;
+            padding-top: 1.25rem;
+            padding-bottom: 1.25rem;
         }
-        .img-zoom:hover img {
-            transform: scale(1.08);
+        .text-stroke {
+            -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+            color: transparent;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased selection:bg-estate-secondary selection:text-white">
+<body class="bg-kana-sand text-kana-dark font-sans antialiased selection:bg-kana-clay selection:text-white">
 
-    <!-- NAVIGATION -->
-    <nav id="navbar" class="fixed w-full top-0 left-0 z-50 transition-all duration-300 py-6 text-white">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-2">
-                <i class="fas fa-hotel text-estate-secondary text-2xl"></i>
-                <span class="font-serif text-xl font-bold tracking-wider">GRAND <span class="text-estate-secondary">RESIDENCE</span></span>
+    <!-- NAVIGASI KONTEMPORER -->
+    <nav id="navbar" class="fixed w-full top-0 left-0 z-50 transition-all duration-500 py-8 text-white">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+            <a href="#" class="font-display text-2xl font-800 tracking-tighter">
+                KANA<span class="text-kana-clay">.</span>LIVING
             </a>
             
-            <div class="hidden md:flex items-center space-x-8 font-semibold text-sm tracking-wide">
-                <a href="#beranda" class="hover:text-estate-secondary transition">Beranda</a>
-                <a href="#keunggulan" class="hover:text-estate-secondary transition">Keunggulan</a>
-                <a href="#tipe" class="hover:text-estate-secondary transition">Tipe Unit</a>
-                <a href="#fasilitas" class="hover:text-estate-secondary transition">Fasilitas</a>
-                <a href="#kontak" class="bg-estate-secondary text-estate-primary px-6 py-2.5 rounded shadow-lg hover:bg-white hover:text-estate-primary transition-all duration-300">Hubungi Kami</a>
+            <div class="hidden md:flex items-center space-x-12 font-medium text-sm tracking-tight">
+                <a href="#konsep" class="hover:text-kana-clay transition">Konsep</a>
+                <a href="#ruang" class="hover:text-kana-clay transition">Pilihan Ruang</a>
+                <a href="#distrik" class="hover:text-kana-clay transition">Distrik</a>
+                <a href="#dialog" class="bg-white text-kana-dark px-6 py-3 rounded-full font-bold tracking-tight hover:bg-kana-clay hover:text-white transition-all duration-300">Mulai Dialog</a>
             </div>
 
             <button id="menu-btn" class="md:hidden text-2xl focus:outline-none">
-                <i class="fas fa-bars"></i>
+                <i class="fas fa-stream"></i>
             </button>
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-estate-primary border-t border-emerald-800 p-6 flex flex-col space-y-4 font-semibold shadow-xl">
-            <a href="#beranda" class="hover:text-estate-secondary py-2">Beranda</a>
-            <a href="#keunggulan" class="hover:text-estate-secondary py-2">Keunggulan</a>
-            <a href="#tipe" class="hover:text-estate-secondary py-2">Tipe Unit</a>
-            <a href="#fasilitas" class="hover:text-estate-secondary py-2">Fasilitas</a>
-            <a href="#kontak" class="bg-estate-secondary text-center text-estate-primary py-3 rounded">Hubungi Kami</a>
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-kana-dark p-8 flex flex-col space-y-4 shadow-2xl border-t border-gray-800">
+            <a href="#konsep" class="text-xl hover:text-kana-clay">Konsep</a>
+            <a href="#ruang" class="text-xl hover:text-kana-clay">Pilihan Ruang</a>
+            <a href="#distrik" class="text-xl hover:text-kana-clay">Distrik</a>
+            <a href="#dialog" class="bg-kana-clay text-center text-white py-4 rounded-xl mt-4">Mulai Dialog</a>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section id="beranda" class="hero-bg h-screen flex items-center justify-center text-center px-4">
-        <div class="max-w-4xl text-white" data-aos="zoom-out" data-aos-duration="1200">
-            <span class="text-estate-secondary font-bold tracking-widest text-xs md:text-sm uppercase bg-emerald-950/60 px-4 py-2 rounded-full border border-emerald-700/50">Eksklusif & Terbatas</span>
-            <h1 class="font-serif text-4xl md:text-7xl font-bold mt-6 mb-6 leading-tight">
-                Temukan Rumah Impian <br><span class="text-estate-secondary">Masa Depan Anda</span>
-            </h1>
-            <p class="text-base md:text-xl text-gray-200 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
-                Hunian premium berdesain modern tropis dengan lingkungan asri, strategis, dan sistem keamanan pintar 24 jam.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#tipe" class="bg-estate-secondary text-estate-primary font-bold px-8 py-4 rounded shadow-2xl hover:bg-white hover:scale-105 transition duration-300">Lihat Tipe Unit</a>
-                <a href="#kontak" class="border-2 border-white/80 font-bold px-8 py-4 rounded hover:bg-white/10 hover:border-white transition duration-300"><i class="fab fa-whatsapp mr-2"></i>Konsultasi Gratis</a>
+    <!-- HERO SECTION (BRUTALIST & MINIMALIST INFLUENCE) -->
+    <section class="hero-bg h-screen flex items-end pb-24 px-6 md:px-12 relative">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-end text-white">
+            <div data-aos="fade-up" data-aos-duration="1200">
+                <p class="text-kana-clay font-bold tracking-widest text-xs uppercase mb-4">• RE-DEFINING RESTRUCTURE</p>
+                <h1 class="font-display text-5xl md:text-8xl font-800 leading-none tracking-tighter uppercase">
+                    Bukan Sekadar <br><span class="text-stroke">Tempat Tinggal.</span>
+                </h1>
             </div>
-        </div>
-    </section>
-
-    <!-- KEUNGGULAN SEKTION -->
-    <section id="keunggulan" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
-                <h2 class="font-serif text-3xl md:text-5xl font-bold text-estate-primary">Mengapa Memilih Kami?</h2>
-                <div class="w-20 h-1 bg-estate-secondary mx-auto mt-4"></div>
-                <p class="text-gray-500 mt-4">Kami memberikan kualitas bangunan terbaik dan kenyamanan hidup maksimal untuk keluarga Anda.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="bg-estate-light p-10 rounded-xl border border-gray-100 hover:shadow-2xl transition duration-300" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-14 h-14 bg-emerald-100 rounded-lg flex items-center justify-center text-estate-primary text-2xl mb-6">
-                        <i class="fas fa-map-marked-alt"></i>
-                    </div>
-                    <h3 class="font-serif text-xl font-bold text-estate-primary mb-3">Lokasi Sangat Strategis</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Hanya 5 menit menuju gerbang tol utama, pusat perbelanjaan, rumah sakit internasional, dan sekolah favorit.</p>
-                </div>
-                <!-- Card 2 -->
-                <div class="bg-estate-light p-10 rounded-xl border border-gray-100 hover:shadow-2xl transition duration-300" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-14 h-14 bg-emerald-100 rounded-lg flex items-center justify-center text-estate-primary text-2xl mb-6">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="font-serif text-xl font-bold text-estate-primary mb-3">Keamanan Berlapis</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Menggunakan One Gate System, kartu akses digital, CCTV lingkungan, dan tim keamanan siaga 24 jam penuh.</p>
-                </div>
-                <!-- Card 3 -->
-                <div class="bg-estate-light p-10 rounded-xl border border-gray-100 hover:shadow-2xl transition duration-300" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-14 h-14 bg-emerald-100 rounded-lg flex items-center justify-center text-estate-primary text-2xl mb-6">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3 class="font-serif text-xl font-bold text-estate-primary mb-3">Lingkungan Hijau & Asri</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Kawasan asri dengan taman botani luas, rute lari (*jogging track*), dan area bermain anak yang bebas polusi.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TIPE UNIT SECTION -->
-    <section id="tipe" class="py-24 bg-estate-light">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
-                <h2 class="font-serif text-3xl md:text-5xl font-bold text-estate-primary">Pilihan Tipe Unit</h2>
-                <div class="w-20 h-1 bg-estate-secondary mx-auto mt-4"></div>
-                <p class="text-gray-500 mt-4">Pilih arsitektur rumah modern yang sesuai dengan kebutuhan dan representasi kelas sosial Anda.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Tipe 1 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-lg img-zoom group transition" data-aos="fade-right">
-                    <div class="overflow-hidden h-64 relative">
-                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-500">
-                        <span class="absolute top-4 left-4 bg-estate-primary text-white font-bold text-xs px-3 py-1.5 rounded">Tipe Amethyst</span>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="font-serif text-2xl font-bold text-estate-primary mb-4">Tipe 64 / 90</h3>
-                        <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 border-b pb-6 mb-6">
-                            <div class="flex items-center gap-2"><i class="fas fa-bed text-estate-secondary"></i> 3 Kamar Tidur</div>
-                            <div class="flex items-center gap-2"><i class="fas fa-bath text-estate-secondary"></i> 2 Kamar Mandi</div>
-                            <div class="flex items-center gap-2"><i class="fas fa-car text-estate-secondary"></i> 1 Carport</div>
-                            <div class="flex items-center gap-2"><i class="fas fa-layer-group text-estate-secondary"></i> 1 Lantai</div>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-xs text-gray-400 uppercase tracking-wider">Harga Mulai</p>
-                                <p class="text-xl font-bold text-estate-primary">Rp 850 Juta-an</p>
-                            </div>
-                            <a href="#kontak" class="bg-estate-primary text-white p-3 rounded hover:bg-estate-secondary hover:text-estate-primary transition"><i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tipe 2 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-lg img-zoom group transition" data-aos="fade-up" data-aos-delay="100">
-                    <div class="overflow-hidden h-64 relative">
-                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-500">
-                        <span class="absolute top-4 left-4 bg-estate-secondary text-estate-primary font-bold text-xs px-3 py-1.5 rounded">Terlaris</span>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="font-serif text-2xl font-bold text-estate-primary mb-4">Tipe 120 / 150</h3>
-                        <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 border-b pb-6 mb-6">
-                            <div class="flex items-center gap-2"><i class="fas fa-bed text-estate-secondary"></i> 4 Kamar Tidur</div>
-                            <div class="flex items-center gap-2"><i class="fas fa-bath text-estate-secondary"></i> 3 Kamar Mandi</div>
-                            <div class="flex items-center gap-2"><i class="fas fa-car text-estate-secondary"></i> 2 Carport</div>
-                            <div class="flex items-center gap-2"><i class="fas fa-layer-group text-estate-secondary"></i> 2 Lantai</div>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-xs text-gray-400 uppercase tracking-wider">Harga Mulai</p>
-                                <p class="text-xl font-bold text-estate-primary">Rp 1,5 Milyar-an</p>
-                            </div>
-                            <a href="#kontak" class="bg-estate-primary text-white p-3 rounded hover:bg-estate-secondary hover:text-estate-primary transition"><i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tipe 3 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-lg img-zoom group transition" data-aos="fade-left" data-aos-delay="200">
-                    <div class="overflow-hidden h-64 relative">
-                        <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-500">
-                        <span class="absolute top-4 left-4 bg-estate-primary text-white font-bold text-xs px-3 py-1.5 rounded">Tipe Diamond Premium</span>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="font-serif text-2xl font-bold text-estate-primary mb-4">Tipe 210 / 250</h3>
-                        <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 border-b pb-6 mb-6">
-                            <div class="flex items-center gap-2"><i class="fas fa-bed text-estate-secondary"></i> 5 Kamar Tidur</div>
-                            <div class="flex items-center gap-2"><i class="fas fa-bath text-estate-secondary"></i> 4 Kamar Mandi</div>
-                            <div class="flex items-center gap-2"><i class="fas fa-car text-estate-secondary"></i> 2 Carport</div>
-                            <div class="flex items-center gap-2"><i class="fas fa-layer-group text-estate-secondary"></i> 2 Lantai</div>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-xs text-gray-400 uppercase tracking-wider">Harga Mulai</p>
-                                <p class="text-xl font-bold text-estate-primary">Rp 2,8 Milyar-an</p>
-                            </div>
-                            <a href="#kontak" class="bg-estate-primary text-white p-3 rounded hover:bg-estate-secondary hover:text-estate-primary transition"><i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FASILITAS UTAMA -->
-    <section id="fasilitas" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
-                <h2 class="font-serif text-3xl md:text-5xl font-bold text-estate-primary">Fasilitas Internal Eksklusif</h2>
-                <div class="w-20 h-1 bg-estate-secondary mx-auto mt-4"></div>
-                <p class="text-gray-500 mt-4">Seluruh fasilitas mewah ini dirancang khusus untuk menunjang gaya hidup sehat dan dinamis Anda.</p>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="text-center p-6 bg-estate-light rounded-xl" data-aos="zoom-in" data-aos-delay="100">
-                    <i class="fas fa-swimming-pool text-4xl text-estate-secondary mb-4"></i>
-                    <h4 class="font-bold text-estate-primary text-sm md:text-base">Kolam Renang</h4>
-                </div>
-                <div class="text-center p-6 bg-estate-light rounded-xl" data-aos="zoom-in" data-aos-delay="200">
-                    <i class="fas fa-dumbbell text-4xl text-estate-secondary mb-4"></i>
-                    <h4 class="font-bold text-estate-primary text-sm md:text-base">Pusat Kebugaran (*Gym*)</h4>
-                </div>
-                <div class="text-center p-6 bg-estate-light rounded-xl" data-aos="zoom-in" data-aos-delay="300">
-                    <i class="fas fa-child text-4xl text-estate-secondary mb-4"></i>
-                    <h4 class="font-bold text-estate-primary text-sm md:text-base">Taman Bermain Anak</h4>
-                </div>
-                <div class="text-center p-6 bg-estate-light rounded-xl" data-aos="zoom-in" data-aos-delay="400">
-                    <i class="fas fa-wifi text-4xl text-estate-secondary mb-4"></i>
-                    <h4 class="font-bold text-estate-primary text-sm md:text-base">Kawasan Wifi Publik</h4>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROMO CTA -->
-    <section class="py-20 bg-estate-primary text-white text-center px-4 relative overflow-hidden">
-        <div class="absolute -right-10 -top-10 w-40 h-40 bg-emerald-800 rounded-full blur-3xl opacity-50"></div>
-        <div class="max-w-3xl mx-auto relative z-10" data-aos="fade-up">
-            <h2 class="font-serif text-3xl md:text-5xl font-bold mb-6">Dapatkan Promo Spesial Bulan Ini!</h2>
-            <p class="text-emerald-100 font-light mb-8 max-w-xl mx-auto text-sm md:text-base">
-                Diskon Booking Fee 50%, Subsidi Biaya KPR, Gratis AC di setiap kamar, serta Smart Home System tanpa biaya tambahan.
-            </p>
-            <a href="#kontak" class="inline-block bg-estate-secondary text-estate-primary font-bold px-10 py-4 rounded shadow-xl hover:bg-white hover:scale-105 transition duration-300">Ambil Promo Sekarang</a>
-        </div>
-    </section>
-
-    <!-- KONTAK / FORM SECTION -->
-    <section id="kontak" class="py-24 bg-estate-light">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right">
-                    <span class="text-estate-secondary font-bold text-xs tracking-widest uppercase">Hubungi Tim Marketing</span>
-                    <h2 class="font-serif text-3xl md:text-5xl font-bold text-estate-primary mt-3 mb-6">Siap Memiliki Rumah Impian Anda?</h2>
-                    <p class="text-gray-600 mb-8 leading-relaxed text-sm md:text-base">
-                        Isi formulir di samping atau hubungi WhatsApp kami. Agen properti profesional kami akan membantu proses pembelian, survei lokasi, hingga simulasi KPR dengan senang hati.
-                    </p>
-                    
-                    <div class="space-y-4 font-semibold text-estate-primary text-sm md:text-base">
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 bg-white shadow rounded-full flex items-center justify-center text-estate-secondary"><i class="fas fa-phone-alt"></i></div>
-                            <span>(021) 8899-7766</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 bg-white shadow rounded-full flex items-center justify-center text-estate-secondary"><i class="fab fa-whatsapp"></i></div>
-                            <span>0812-3456-7890 (WhatsApp Siaga)</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 bg-white shadow rounded-full flex items-center justify-center text-estate-secondary"><i class="fas fa-envelope"></i></div>
-                            <span>info@grandresidence.com</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-gray-100" data-aos="fade-left">
-                    <h3 class="font-serif text-2xl font-bold text-estate-primary mb-6">Formulir Minat Survei</h3>
-                    <form action="#" class="space-y-5 text-xs md:text-sm">
-                        <div>
-                            <label class="block text-gray-600 font-bold mb-2">Nama Lengkap</label>
-                            <input type="text" placeholder="Masukkan nama Anda" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-estate-primary bg-gray-50 transition" required>
-                        </div>
-                        <div>
-                            <label class="block text-gray-600 font-bold mb-2">Nomor WhatsApp</label>
-                            <input type="tel" placeholder="Contoh: 0812345678" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-estate-primary bg-gray-50 transition" required>
-                        </div>
-                        <div>
-                            <label class="block text-gray-600 font-bold mb-2">Pilihan Tipe Unit</label>
-                            <select class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-estate-primary bg-gray-50 transition">
-                                <option>Tipe Amethyst (64/90)</option>
-                                <option>Tipe Terlaris (120/150)</option>
-                                <option>Tipe Diamond Premium (210/250)</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="w-full bg-estate-primary text-white font-bold py-4 rounded-lg shadow-lg hover:bg-estate-secondary hover:text-estate-primary transition-all duration-300 uppercase tracking-wider text-xs">Kirim Data Saya</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-estate-dark text-gray-400 py-16 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-gray-800 pb-12 mb-8 text-xs md:text-sm">
-            <div>
-                <a href="#" class="flex items-center gap-2 text-white mb-6">
-                    <i class="fas fa-hotel text-estate-secondary text-2xl"></i>
-                    <span class="font-serif text-xl font-bold tracking-wider">GRAND <span class="text-estate-secondary">RESIDENCE</span></span>
+            <div class="max-w-md md:mb-4" data-aos="fade-up" data-aos-delay="300">
+                <p class="text-gray-300 text-base md:text-lg font-light leading-relaxed mb-8">
+                    Arsitektur fungsional yang bernapas. KANA menghadirkan ruang hidup kontemporer dengan efisiensi tata cahaya alami dan material mentah pilihan.
+                </p>
+                <a href="#ruang" class="inline-flex items-center gap-4 bg-kana-clay text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-kana-dark transition duration-300">
+                    Eksplorasi Ruang <i class="fas fa-arrow-right"></i>
                 </a>
-                <p class="leading-relaxed text-gray-400">
-                    Kawasan hunian eksklusif yang memadukan keindahan alam tropis dengan kemudahan mobilitas modern di pusat kota.
+            </div>
+        </div>
+    </section>
+
+    <!-- ASYMMETRIC CONCEPT SECTION -->
+    <section id="konsep" class="py-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+                
+                <div class="md:col-span-5 relative" data-aos="fade-right">
+                    <span class="text-xs font-bold tracking-widest text-kana-clay uppercase block mb-2">01 / FILOSOFI DESAIN</span>
+                    <h2 class="font-display text-4xl md:text-6xl font-800 tracking-tighter uppercase mb-6 leading-none">
+                        Estetika <br>Mentah & Jujur.
+                    </h2>
+                    <p class="text-kana-muted leading-relaxed mb-8 text-sm md:text-base">
+                        Meninggalkan ornamen berlebih. Kami mengadopsi elemen garis tegas, material beton ekspos berpadu tekstur kayu hangat, menciptakan harmoni ketenangan interior yang jujur di tengah hiruk-pikuk urban.
+                    </p>
+                    <div class="border-l-2 border-kana-clay pl-4 italic text-kana-muted text-sm">
+                        "Ruang terbaik adalah ruang yang tidak membatasi pergerakan jiwa Anda."
+                    </div>
+                </div>
+
+                <div class="md:col-span-7 grid grid-cols-12 gap-4 relative">
+                    <!-- Overlapping Images Layout -->
+                    <div class="col-span-8 overflow-hidden rounded-2xl shadow-xl" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" class="w-full h-[400px] object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="col-span-4 overflow-hidden rounded-2xl shadow-xl mt-12" data-aos="zoom-in" data-aos-delay="400">
+                        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=400&q=80" class="w-full h-[300px] object-cover hover:scale-105 transition duration-500">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- URBAN UNITS SELECTION (SLICK MODULAR CARDS) -->
+    <section id="ruang" class="py-32 bg-kana-dark text-white rounded-t-[3rem] md:rounded-t-[5rem]">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-20" data-aos="fade-up">
+                <div>
+                    <span class="text-xs font-bold tracking-widest text-kana-clay uppercase block mb-2">02 / MODUL HUNIAN</span>
+                    <h2 class="font-display text-4xl md:text-6xl font-800 tracking-tighter uppercase">Koleksi Struktur</h2>
+                </div>
+                <p class="text-gray-400 max-w-sm mt-4 md:mt-0 font-light text-sm">
+                    Tersedia tiga manifesto arsitektur yang dirancang adaptif terhadap kebutuhan privasi modern Anda.
                 </p>
             </div>
-            <div>
-                <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-xs">Akses Navigasi</h4>
-                <div class="grid grid-cols-2 gap-3 font-medium">
-                    <a href="#beranda" class="hover:text-white transition">Beranda</a>
-                    <a href="#keunggulan" class="hover:text-white transition">Keunggulan</a>
-                    <a href="#tipe" class="hover:text-white transition">Tipe Unit</a>
-                    <a href="#fasilitas" class="hover:text-white transition">Fasilitas</a>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Unit Card 1 -->
+                <div class="group border-b border-gray-800 pb-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="overflow-hidden rounded-2xl mb-6 aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 filter grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-display text-2xl uppercase tracking-tight">Kova Studio</h3>
+                        <span class="text-kana-clay font-bold font-mono">Rp 920jt</span>
+                    </div>
+                    <p class="text-gray-400 text-xs leading-relaxed mb-6 font-light">Efisiensi denah lantai tunggal terbuka. Ideal untuk profesional muda dinamis yang menghargai kebebasan spasial.</p>
+                    <div class="flex gap-6 text-xs text-gray-500 font-mono">
+                        <span>LB: 72m²</span> <span>•</span> <span>2 BED</span> <span>•</span> <span>1 LEVEL</span>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-xs">Ikuti Media Sosial Kami</h4>
-                <div class="flex space-x-4 text-xl text-white mb-4">
-                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-estate-secondary hover:text-estate-primary transition"><i class="fab fa-facebook-f text-sm"></i></a>
-                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-estate-secondary hover:text-estate-primary transition"><i class="fab fa-instagram text-sm"></i></a>
-                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-estate-secondary hover:text-estate-primary transition"><i class="fab fa-youtube text-sm"></i></a>
+
+                <!-- Unit Card 2 -->
+                <div class="group border-b border-gray-800 pb-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="overflow-hidden rounded-2xl mb-6 aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 filter grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-display text-2xl uppercase tracking-tight">Atrium House</h3>
+                        <span class="text-kana-clay font-bold font-mono">Rp 1.8M</span>
+                    </div>
+                    <p class="text-gray-400 text-xs leading-relaxed mb-6 font-light">Menghadirkan taman internal terbuka di tengah rumah untuk sirkulasi udara mikro silang yang konstan.</p>
+                    <div class="flex gap-6 text-xs text-gray-500 font-mono">
+                        <span>LB: 145m²</span> <span>•</span> <span>3 BED</span> <span>•</span> <span>2 LEVEL</span>
+                    </div>
                 </div>
-                <p class="text-xs text-gray-500">Terdaftar dan diawasi oleh Kementerian PUPR.</p>
+
+                <!-- Unit Card 3 -->
+                <div class="group border-b border-gray-800 pb-8" data-aos="fade-up" data-aos-delay="300">
+                    <div class="overflow-hidden rounded-2xl mb-6 aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 filter grayscale group-hover:grayscale-0">
+                    </div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-display text-2xl uppercase tracking-tight">Mvmt Villa</h3>
+                        <span class="text-kana-clay font-bold font-mono">Rp 3.1M</span>
+                    </div>
+                    <p class="text-gray-400 text-xs leading-relaxed mb-6 font-light">Skala masif dengan sudut kaca tanpa bingkai tirai. Struktur premium untuk privasi mutlak keluarga urban.</p>
+                    <div class="flex gap-6 text-xs text-gray-500 font-mono">
+                        <span>LB: 260m²</span> <span>•</span> <span>4 BED</span> <span>•</span> <span>2 LEVEL</span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-4">
-            <p>© 2026 PT Grand Residence Properti Tbk. Hak Cipta Dilindungi.</p>
-            <p class="uppercase tracking-widest text-[10px]">Luxurious Living Space</p>
+    </section>
+
+    <!-- MINIMALIST FEATURE / DISTRICT HIGHLIGHT -->
+    <section id="distrik" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" class="w-full h-[500px] object-cover rounded-3xl shadow-xl">
+                </div>
+                <div class="order-1 md:order-2" data-aos="fade-left">
+                    <span class="text-xs font-bold tracking-widest text-kana-clay uppercase block mb-2">03 / AKSESIBILITAS INTEGRAL</span>
+                    <h2 class="font-display text-4xl md:text-6xl font-800 tracking-tighter uppercase mb-8 leading-none">Distrik <br>Pertemuan Urban.</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4 border-b border-gray-100 pb-4">
+                            <span class="font-display text-xl text-kana-clay font-bold">01</span>
+                            <div>
+                                <h4 class="font-bold uppercase text-sm tracking-tight text-kana-dark">Hub Transit Utama</h4>
+                                <p class="text-xs text-kana-muted mt-1">7 Menit menuju Stasiun Sentral & Akses Tol Lingkar Luar.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 border-b border-gray-100 pb-4">
+                            <span class="font-display text-xl text-kana-clay font-bold">02</span>
+                            <div>
+                                <h4 class="font-bold uppercase text-sm tracking-tight text-kana-dark">Ekosistem Hijau Mandiri</h4>
+                                <p class="text-xs text-kana-muted mt-1">Dikelilingi 40% area lanskap aktif, kedai kopi artisan, dan galeri seni komunal.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="font-display text-xl text-kana-clay font-bold">03</span>
+                            <div>
+                                <h4 class="font-bold uppercase text-sm tracking-tight text-kana-dark">Fasilitas Otomasi Pintar</h4>
+                                <p class="text-xs text-kana-muted mt-1">Integrasi panel surya mikro mandiri untuk efisiensi kelistrikan lingkungan harian.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COOPERATIVE DIALOGUE / FORM SECTION -->
+    <section id="dialog" class="py-32 bg-kana-sand relative">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div data-aos="zoom-in">
+                <span class="text-xs font-bold tracking-widest text-kana-clay uppercase block mb-4">// VISIT & DISCUSS</span>
+                <h2 class="font-display text-4xl md:text-7xl font-800 tracking-tighter uppercase mb-6 leading-none">Mari Mulai <br>Percakapan Nyata.</h2>
+                <p class="text-kana-muted max-w-lg mx-auto text-sm md:text-base font-light mb-12">
+                    Kami membatasi kunjungan lapangan per hari demi menjaga intimasi dan kejelasan informasi arsitektural. Jadwalkan waktu Anda.
+                </p>
+            </div>
+
+            <!-- Sleek Minimalist Form -->
+            <form action="#" class="max-w-xl mx-auto space-y-6 text-left bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-gray-100" data-aos="fade-up">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <input type="text" placeholder="Nama Anda" class="w-full bg-kana-sand/40 border-b border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-kana-clay transition" required>
+                    </div>
+                    <div>
+                        <input type="tel" placeholder="WhatsApp / Telepon" class="w-full bg-kana-sand/40 border-b border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-kana-clay transition" required>
+                    </div>
+                </div>
+                <div>
+                    <select class="w-full bg-kana-sand/40 border-b border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-kana-clay text-kana-muted transition">
+                        <option>Konsultasi Struktur: Kova Studio</option>
+                        <option>Konsultasi Struktur: Atrium House</option>
+                        <option>Konsultasi Struktur: Mvmt Villa</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-kana-dark text-white font-bold py-4 rounded-full hover:bg-kana-clay transition duration-300 uppercase tracking-wider text-xs">Kirim Pengajuan Agenda</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ARCHITECTURAL FOOTER -->
+    <footer class="bg-kana-dark text-gray-500 py-16 px-6 md:px-12 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8 border-b border-gray-800 pb-12 mb-8 text-xs font-mono">
+            <div>
+                <span class="font-display text-xl text-white font-800 tracking-tighter block mb-2">KANA<span class="text-kana-clay">.</span>LIVING</span>
+                <p class="text-gray-500">Curated Urban Living Blueprint.</p>
+            </div>
+            <div class="flex flex-wrap gap-8 uppercase font-medium">
+                <a href="#konsep" class="hover:text-white transition">Konsep</a>
+                <a href="#ruang" class="hover:text-white transition">Ruang</a>
+                <a href="#distrik" class="hover:text-white transition">Distrik</a>
+                <a href="https://wa.me/6281234567890" class="text-kana-clay hover:underline"><i class="fab fa-whatsapp mr-1"></i> Direct Line</a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-[10px] tracking-widest text-gray-600 gap-4 uppercase font-mono">
+            <p>© 2026 KANA DEVELOPMENTS COLLABORATIVE. ALL RIGHTS RESERVED.</p>
+            <p>DESIGNED FOR THE NEXT ERA</p>
         </div>
     </footer>
 
@@ -362,9 +291,9 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         // Inisialisasi Animasi AOS
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 1200, once: true });
 
-        // Animasi Navbar saat di-scroll
+        // Efek Minimalis Navbar saat di-scroll
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -374,19 +303,15 @@
             }
         });
 
-        // Responsivitas Hambuger Menu di HP
+        // Toggle Responsive Menu
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-
-        // Menutup menu mobile otomatis jika tautan diklik
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
+        
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
         });
     </script>
 </body>
